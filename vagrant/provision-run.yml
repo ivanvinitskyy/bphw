@@ -1,0 +1,5 @@
+---
+
+- name: Provision App
+  import_playbook: ./vagrant-playbook.yml
+

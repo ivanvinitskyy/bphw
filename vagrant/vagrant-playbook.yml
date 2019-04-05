@@ -1,0 +1,15 @@
+---
+
+- name: Vagrant Playbook
+  hosts: "localhost"
+
+  vars_files:
+    - ../ansible/vars/common.yml
+
+  roles:
+    - role: pip
+      become: yes
+    - role: docker
+      become: yes
+    - role: app
+      become: yes
