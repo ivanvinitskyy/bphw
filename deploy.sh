@@ -21,6 +21,7 @@ usage(){
   echo "deploy   Deploys Vagrant machine, builds docker BP image and runs it"
   echo "deps     Checks for dependencies necessary to run deploy / test"
   echo "test     Tests that deployment was sucessfull"
+  echo "cleanup  Removes vagrant box"
   1>&2
   exit 1
 }
@@ -47,6 +48,11 @@ deploy(){
  cd vagrant && vagrant up --provision
 }
 
+cleanup(){
+  echo "Destroying App"
+  cd vagrant && vagrant destroy -f
+}
+
 if [ "$#" -lt 1 ]; then
   log "ERROR: You need to provide an action!"
   usage
@@ -67,6 +73,9 @@ parse_args(){
         ;;
       deps)
         check
+        ;;
+      cleanup)
+        cleanup
         ;;
       *)
 	usage
