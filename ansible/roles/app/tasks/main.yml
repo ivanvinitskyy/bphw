@@ -2,6 +2,22 @@
   template: 
     src: app-code.conf.j2 
     dest: "/vagrant/docker/app-code"
+  register: source_code
+
+- name: Run Application
+  docker_container:
+    name: bp-app
+    state: absent
+  when: source_code.changed
+  ignore_errors: yes
+
+- name: Remove old app docker image
+  docker_image:
+     path: /vagrant/docker
+     name: app
+     state: absent
+  when: source_code.changed
+  ignore_errors: yes
 
 - name: Build app docker image
   docker_image:

@@ -1,3 +1,5 @@
 ansible/roles/docker
 ansible/roles/pip
 vagrant/.vagrant
+*.retry
+*.log

@@ -29,7 +29,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 			ansible.limit = "all,localhost"
 			ansible.galaxy_role_file = "../ansible/requirements.yml"
                         ansible.galaxy_roles_path = "../ansible/roles"
-                        #ansible.extra_vars = { ansible_python_interpreter:"/usr/bin/python3" }
 		end
 	end
 end
